@@ -43,13 +43,12 @@ class DayOne
 	
 	public function problemTwo(array $items): int 
 	{
-		$this->alphaMap;
 		$keys = array_keys($this->alphaMap);	
 		foreach ($items as $key => $input)
 	       	{
 			$arr = array();
 			$letters = array();
-			foreach ($str_split($input) as $c)
+			foreach (str_split($input) as $c)
 		       	{
 				if (is_numeric($c))
 				{
