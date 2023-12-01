@@ -1,8 +1,10 @@
 <?php declare(strict_types=1);
 
-class DayOne {
+class DayOne 
+{
 
-	public function problemOne(array $items): int {
+	public function problemOne(array $items): int 
+	{
 		$sum = 0; 
 		foreach ($items as $key => $value) {
 			$justNums = preg_replace("/[^0-9]/", "", $value);
@@ -26,49 +28,56 @@ class DayOne {
 		"nine" => "9"	
 	);
 
-	public function hasNumberWord($word): string {
-		$keys = array_keys($this->alphaMap);	
+	public function hasNumberWord($word, $keys): string 
+	{
 		$o = "";
-		foreach ($keys as $num) {
-			if (str_contains($word, $num)) {
+		foreach ($keys as $num) 
+		{
+			if (str_contains($word, $num)) 
+			{
 				$o = $num;
 			}
 		}
 		return $o;
 	}
 	
-	public function problemTwo(array $items): int {
+	public function problemTwo(array $items): int 
+	{
 		$this->alphaMap;
 		$keys = array_keys($this->alphaMap);	
-		foreach ($items as $key => $input) {
+		foreach ($items as $key => $input)
+	       	{
 			$arr = array();
 			$letters = array();
-			$cArr = str_split($input);
-			foreach ($cArr as $c) {
-				if (is_numeric($c)) {
+			foreach ($str_split($input) as $c)
+		       	{
+				if (is_numeric($c))
+				{
 					array_push($arr, $c);
 					$letters = array();
 				}
-				else {
+				else 
+				{
 					array_push($letters, $c);	
 				}	
 
 				$word = implode("", $letters);
-				$maybeNumberWord = $this->hasNumberWord($word);
+				$maybeNumberWord = $this->hasNumberWord($word, $keys);
 
-				if (!empty($maybeNumberWord)) {
+				if (!empty($maybeNumberWord)) 
+				{
 					array_push($arr, $this->alphaMap[$maybeNumberWord]);
 					$letters = array(end($letters));		
 				}
 			}
 			$items[$key] = implode("", $arr);
 		}
-		print_r($items);
 		return $this->problemOne($items);
 	}
 
 
-	public function run() {
+	public function run() 
+	{
 		echo "RUNNING DAY ONE" . PHP_EOL;
 		$array = file("resources/dayone.txt");
 		$result = $this->problemOne($array);
@@ -76,10 +85,10 @@ class DayOne {
 		print_r($result . PHP_EOL);
 
 
-		$two_array = file("resources/dayone_part_two.txt");
-		$two_result = $this->problemTwo($two_array);
+		$array = file("resources/dayone_part_two.txt");
+		$result = $this->problemTwo($array);
 		echo "PART 2: ";
-		print_r($two_result);
+		print_r($result);
 	}
 }
 
