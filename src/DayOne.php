@@ -6,7 +6,8 @@ class DayOne
 	public function problemOne(array $items): int 
 	{
 		$sum = 0; 
-		foreach ($items as $key => $value) {
+		foreach ($items as $key => $value) 
+		{
 			$justNums = preg_replace("/[^0-9]/", "", $value);
 			$num = $justNums[0] . $justNums[strlen($justNums)-1]; 
 			$iNum = intval($num);
